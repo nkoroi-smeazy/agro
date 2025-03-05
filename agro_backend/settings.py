@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-bgf4wncut1$rbbg@4ikmw+j(gh$97b(&5v(e2#fb(x81@u_pvq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["agro-oe3a.onrender.com",]
 
 
 # Application definition
@@ -70,7 +70,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'agro_backend.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Replace with your Flutter app's URL or development server
+    "http://localhost:3000", "agro-oe3a.onrender.com",  # Replace with your Flutter app's URL or development server
     # Add your production domain(s) when ready
 ]
 
