@@ -4,7 +4,8 @@ from core.models import User, County, Ward, Locality, CommonInterestGroup, Farme
 
 # Custom UserAdmin to include the user_type field
 class CustomUserAdmin(BaseUserAdmin):
-    # Extend the fieldsets to display the user_type
+    list_display = ('username', 'email', 'user_type', 'is_staff', 'is_superuser')
+    list_filter = ('user_type', 'is_staff', 'is_superuser')
     fieldsets = BaseUserAdmin.fieldsets + (
         (None, {'fields': ('user_type',)}),
     )
