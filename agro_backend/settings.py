@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-bgf4wncut1$rbbg@4ikmw+j(gh$97b(&5v(e2#fb(x81@u_pvq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["agro-oe3a.onrender.com",]
+ALLOWED_HOSTS = ["agro-oe3a.onrender.com","127.0.0.1"]
 
 
 # Application definition
@@ -41,20 +41,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'core',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # or JWT (see below)
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
     ],
+    
 }
 
 
@@ -73,7 +75,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'agro_backend.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000", "agro-oe3a.onrender.com",  # Replace with your Flutter app's URL or development server
+    "http://localhost:3000", "https://agro-oe3a.onrender.com",  # Replace with your Flutter app's URL or development server
     # Add your production domain(s) when ready
 ]
 
@@ -109,6 +111,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'core.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
